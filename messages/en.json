@@ -1,0 +1,158 @@
+{
+  "home": {
+    "nav": {
+      "home": "Home",
+      "job": "Jobs",
+      "investor": "Investors",
+      "captain": "Captains",
+      "loadApp": "Load App",
+      "name":"Takhawy"
+    },
+    "about": {
+      "title1": "One trip, two joys",
+      "title2": "Save and deliver!",
+      "dec": "Discover the simple and complete world of travel through Tawazeez app. Get financial savings and social connection, our app combines easy access to cars and ride-sharing for an unforgettable experience."
+    },
+    "ad": {
+      "title": "We provide you with features in Takhawy",
+      "timeTitle": "time",
+      "timedec": "Flights are on time and available all day",
+      "provisionTitle": "provision",
+      "provisiondec": "Flight sharing always provides you with more than you expect",
+      "securitytitle": "security",
+      "securitydec": "Full flight tracking and more features within the app",
+      "hotelstitle": "hotels",
+      "hotelsdec": "To connect with the leading online hotel booking platform BOOKING"
+    },
+    "app": {
+      "title": "Download Takhawy app now!",
+      "dec": "Effortless car sharing: Easily book and pay with our car sharing app, which offers a diverse fleet, real-time GPS tracking, and secure transactions."
+    },
+    "who": {
+      "title1": "Who Takhawy",
+      "dec": "Takhawy is a ride-sharing service that connects people who want to go from one city to another with people who want to go to the same destination and through which the cost is divided among them to ensure their safety and increase the quality of the service to transport them.",
+      "title2": "Become part of our story!",
+      "joinTime": "Join our team",
+      "joinCap": "Join as a captain"
+    },
+    "location": {
+      "title": "Where do you want to meet my brother?"
+    },
+    "qui": {
+      "title": "Frequently Questions"
+    },
+    "footer": {
+      "name":"Takhawy",
+      "dec": "Takhawy is a ride-sharing app that shares rides from one city to another in the Kingdom.",
+      "title1": "Services",
+      "title2": "Policy",
+      "title3": "Inquiries",
+      "job": "jobs",
+      "investor": "Investors",
+      "captain": "captains",
+      "conditions": "terms and conditions",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "jobs": {
+    "title1": "Be part of our mission",
+    "title2": "We are looking for passionate people to join Takhawy",
+    "jobNum": "jobs waiting for you",
+    "details": "details",
+    "contactUs": {
+      "title": "Contact Us",
+      "dec": "Contact us anytime! We are always waiting for you!",
+      "email": "email",
+      "emailPlac": "Type your email address",
+      "num": "mobile number",
+      "numPlace": "Type your cell phone number",
+      "jopTitle": "Job",
+      "jopTitlePlace": "Type the name of the job",
+      "cv": "resume",
+      "cvPlace": "Upload your resume",
+      "send": "send"
+    },
+    "share": "Share job",
+    "copy": "copy link"
+  },
+  "investor": {
+    "title": "Join us on our journey of growth",
+    "dec": "Invest in Takhawy's future",
+    "info": "For inquiries, please contact us",
+    "company": "company",
+    "one": "individual",
+    "name": "name",
+    "namePlac": "type name",
+    "name2": "surname",
+    "name2Place": "Type surname",
+    "email": "email",
+    "emailPlac": "Type your email address",
+    "num": "mobile number",
+    "numPlace": "Type your cell phone number",
+    "cv": "Attach files",
+    "cvPlace": "Upload files",
+    "jopTitle": "message",
+    "jopTitlePlace": "write",
+    "agree": "I have read and accept the terms and conditions",
+    "send": "send"
+  },
+  "captain": {
+    "title": "Share your journey with Takhawy",
+    "dec": "Lead your journey with pride",
+    "info": "We are happy to serve you, join us!",
+    "why": {
+      "title": "Why be a captain?",
+      "smartTitle": "Smart Guidance",
+      "smartDec": "The app can provide smart guidance to captains on the best route and time for the journey, improving the travel experience and reducing the hassle of commuting.",
+      "ratingTitle": "Rating & Reviews",
+      "ratingDec": "The app allows passengers to rate and leave reviews for captains, helping to build a good reputation and increase trust between captains and passengers.",
+      "EffectTitle": "Effectiveness",
+      "EffectDec": "Captains can join the ride-sharing app to maximize the utilization of their trips by offering seats to passengers who share the same destination.",
+      "costTitle": "Low cost and increased income.",
+      "costDec": "Captains can offer an opportunity to split costs with passengers, or increase your profits by offering in-app transportation services. Help you achieve your financial goals."
+    },
+    "name": "fullName",
+    "namePlac": "Type name",
+    "gender": "gender",
+    "genderPlace": "Type male or female",
+    "email": "email",
+    "emailPlac": "Type your email address",
+    "num": "mobile number",
+    "numPlace": "Type your cell phone number",
+    "pass": "Password",
+    "passPlace": "type password",
+    "pass2": "Confirm Password",
+    "pass2Place": "Type Password",
+    "agree": "I have read and accept the terms and conditions",
+    "identityTitle": "identity",
+    "identityDec": "I upload my identity (front/back)",
+    "numIdentityTitle": "identity number",
+    "numIdentityDec": "Write identity number",
+    "licenseTitle": "driver's license",
+    "licenseDec": "Hold up driver's license (front/back)",
+    "cartTitle": "cart log",
+    "cartDec": "Lift cart log",
+    "serialTitle": "Vehicle serial number",
+    "serialDec": "Write the serial number of the vehicle",
+    "NumCarTitle": "Vehicle number in letters and numbers",
+    "NumCarDec": "Write the vehicle number such as N T U 2 9 2 9",
+    "imgCarTitle": "Pictures of the vehicle",
+    "imgCarDec": "Upload photos of the vehicle from four directions",
+    "errorImgCar":"Please upload the photos of the vehicle from four sides for complete information",
+    "classTitle": "vehicle class",
+    "classDec": "Select vehicle class",
+    "seatsTitle": "Number of seats",
+    "seatsDec": "Select number of seats",
+    "colorTitle": "Vehicle Color",
+    "colorDec": "Select vehicle color",
+    "typeTitle": "Vehicle Type",
+    "typeDec": "Choose the type of vehicle",
+    "nameCarTitle": "Vehicle name",
+    "nameCarDec": "Select vehicle name",
+    "yearCarTitle": "Year of production",
+    "yearCarDec": "Select the year of production",
+    "back": "Previous",
+    "craete": "Create an account",
+    "next": "Next"
+  }
+}

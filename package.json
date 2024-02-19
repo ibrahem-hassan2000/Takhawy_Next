@@ -1,0 +1,28 @@
+{
+  "name": "takhawy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.5.2",
+    "@mantine/form": "^7.5.2",
+    "@mantine/hooks": "^7.5.2",
+    "@mantine/modals": "^7.5.2",
+    "@mantine/notifications": "^7.5.2",
+    "bootstrap": "^5.3.2",
+    "next": "14.1.0",
+    "next-intl": "^3.7.0",
+    "react": "^18",
+    "react-bootstrap": "^2.10.1",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.19",
+    "typescript": "5.3.3"
+  }
+}
