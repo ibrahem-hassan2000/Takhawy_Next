@@ -28,7 +28,12 @@ body {
   font-weight: 700;
   font-style: normal;
 }
-
+input,
+textarea,
+.mantine-FileInput-input div,
+form .partImgFile .partImg p {
+  text-transform: none !important;
+}
 input::placeholder {
   font-family: "cairoL";
 }
@@ -85,6 +90,9 @@ html::-webkit-scrollbar-track {
   .con {
     padding: 0px 40px;
   }
+  body {
+    padding-top: 86px;
+  }
 }
 @media (max-width: 768px) {
   .con {
@@ -124,10 +132,13 @@ html::-webkit-scrollbar-track {
   min-width: 400px;
   max-width: 400px;
   flex: 1;
-  transition: 0.3s;
+  transition: 0.5s;
+  border: 1px solid #eeecfd;
 }
 .features .content .parts .part:hover {
-  box-shadow: 0px 0px 5px #c9c6e2;
+  box-shadow: 0px 6px 21px #dac3f8;
+  border: 1px solid #5c44ea33;
+  transform: translateY(-7px);
 }
 .features .content .parts .part .imgPart {
   width: 76px;
@@ -249,6 +260,10 @@ html::-webkit-scrollbar-track {
   font-family: "cairoL";
   font-size: 22px;
   line-height: 24px;
+  transition: 0.4s;
+}
+.about .content .join a:hover {
+  box-shadow: 4px 6px 21px #c8d3d7;
 }
 .about .content .join .joinTeam {
   background-color: white;
@@ -361,12 +376,14 @@ html::-webkit-scrollbar-track {
   top: 50%;
   transform: translateY(-50%);
 }
+.questions .accordion-collapse {
+}
 .questions .accordion-collapse.collapse.show {
-  background-color: rgba(246, 246, 246, 1);
   border-radius: 0px 0px 18px 18px;
 }
 .questions .content .accordion .accordion-item .accordion-body {
   padding: 0px 24px 18px;
+  background-color: rgba(246, 246, 246, 1);
 }
 .questions .content .accordion .accordion-item .accordion-body p {
   font-size: 18px;
@@ -419,7 +436,6 @@ html[dir="ltr"] .questions .accordion-button::after {
 
     line-height: 28px;
   }
-  
 }
 @media (max-width: 426px) {
   .questions .content h2 {
@@ -496,19 +512,20 @@ footer .content .part1 ul li a {
   align-items: center;
   justify-content: center;
   transition: 0.5s;
-
 }
 footer .content .part1 ul li a img {
   object-fit: contain;
 }
 footer .content .part1 ul li a svg path {
-  transition: 0.3s;
+  transition: 0.1s;
 }
-footer .content .part1 ul li a:hover{
+footer .content .part1 ul li a:hover {
   box-shadow: 2px 3px 17px #aca1fd;
+  background-color: rgb(198 190 248 / 93%);
+  transform: scale(1.11);
 }
 footer .content .part1 ul li a:hover svg path {
-  fill: rgb(185 206 250);
+  fill: rgb(92 68 234);
 }
 footer .content .part2 {
   display: flex;
@@ -540,6 +557,28 @@ footer .content .part2 .part ul li a {
   font-family: "cairoL";
   text-wrap: nowrap;
   color: black;
+  transform: 0.5s;
+  position: relative;
+}
+footer .content .part2 .part ul li a::before {
+  position: absolute;
+  content: "";
+  height: 2px;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  transition: 0.6s;
+  background-color: var(--main_color);
+}
+html[dir="ltr"] footer .content .part2 .part ul li a::before {
+  right: auto;
+  left: 0;
+}
+footer .content .part2 .part ul li a:hover:before {
+  width: 70%;
+}
+footer .content .part2 .part ul li a:hover {
+  color: var(--main_color);
 }
 @media (max-width: 1270px) {
   footer .content .part2 {
@@ -604,6 +643,7 @@ footer .content .part2 .part ul li a {
 .app .content .part1 {
   flex: 1;
   min-width: 500px;
+  position: relative;
 }
 .app .content .part1 img {
   max-width: 100%;
@@ -612,7 +652,7 @@ footer .content .part2 .part ul li a {
 }
 .app .content .part2 {
   flex: 1;
-}
+} 
 .app .content .part2 h2 {
   font-size: 52px;
   font-weight: 700;
@@ -1223,6 +1263,9 @@ li.nav-item.lang a.active {
 }
 
 @media (max-width: 992px) {
+  .navbar {
+    padding-top: 0rem;
+  }
   .endnav {
     margin-bottom: 34px;
   }
@@ -1452,6 +1495,11 @@ li.nav-item.lang a.active {
   min-width: 410px;
   flex: 1;
   max-width: 550px;
+  transition: 0.5s;
+}
+.jobs .content .allJobs .job:hover {
+  box-shadow: 0px 6px 21px #8a64bc73;
+  border: 1px solid transparent;
 }
 .jobs .content .allJobs .job .info {
   width: 288px;
@@ -1503,6 +1551,14 @@ li.nav-item.lang a.active {
   line-height: 24px;
   font-family: "cairoL";
   border: none;
+  transition: 0.5s;
+  border: 1px solid var(--main_color);
+}
+.jobs .content .allJobs .job .moreDetails:hover {
+  color: var(--main_color);
+  background-color: white;
+  border: 1px solid var(--main_color);
+  box-shadow: 0px 6px 21px #8a64bc;
 }
 .modal.jobsModel {
   background: rgb(209 209 244 / 57%);
@@ -1753,7 +1809,6 @@ li.nav-item.lang a.active {
   font-family: "cairoM";
 }
 form .formInput {
-  
 }
 form .send {
   background-color: transparent;
@@ -1868,7 +1923,8 @@ form .formInput {
   background-repeat: no-repeat;
   background-position: center;
 }
-html[dir="ltr"] .contactUS .mantine-FileInput-root::before ,html[dir="ltr"] .investors .mantine-FileInput-root::before {
+html[dir="ltr"] .contactUS .mantine-FileInput-root::before,
+html[dir="ltr"] .investors .mantine-FileInput-root::before {
   left: auto;
   right: 0;
 }
@@ -1935,7 +1991,6 @@ html[dir="ltr"] .contactUS .mantine-FileInput-root::before ,html[dir="ltr"] .inv
     min-width: 100%;
     max-width: 100%;
   }
-  
 }
 /*policy*/
 .policy {
@@ -2183,17 +2238,31 @@ form .btn_page.notActive {
   height: 56px;
   width: 128px;
 }
-html[dir=ltr] .investors .switchInvestors.company::before {
+html[dir="ltr"] .investors .switchInvestors.company::before {
   left: 0;
 }
-html[dir=ltr] .investors .switchInvestors.one::before {
+html[dir="ltr"] .investors .switchInvestors.one::before {
   left: 50%;
 }
 .investors .switchInvestors button.active {
   color: white;
 }
+form .checkPart {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 12px;
+}
+form .checkPart p {
+  font-size: 18px;
+  font-family: "cairoM";
+}
+form .checkPart a {
+  font-size: 18px;
+  font-family: "cairoM";
+  text-decoration: underline !important;
+}
 form .mantine-Checkbox-root {
-  margin-top: 36px;
 }
 .investors form .mantine-FileInput-section {
   width: 64px;
@@ -2233,7 +2302,6 @@ form .mantine-Checkbox-root label {
 html[dir="ltr"] .investors form .chekError::before {
   left: -36px;
   right: auto;
-
 }
 .mantine-PasswordInput-input {
   border: none;
@@ -2256,48 +2324,47 @@ form .partBtn input {
   max-width: 300px;
   flex: 1;
 }
-.mantine-Select-root{
+.mantine-Select-root {
   height: 100%;
 }
-.mantine-Select-section{
-  background-image: url('/images/arrow.svg');
+.mantine-Select-section {
+  background-image: url("/images/arrow.svg");
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
-.mantine-Select-section::before{
+.mantine-Select-section::before {
   position: absolute;
-  
 }
-.mantine-Select-section svg{
+.mantine-Select-section svg {
   display: none;
 }
-.mantine-Select-option svg{
+.mantine-Select-option svg {
   color: var(--main_color);
 }
-.mantine-Notifications-root{
+.mantine-Notifications-root {
   top: 32px;
   bottom: auto;
   left: 32px;
   right: auto;
   z-index: 50000;
 }
-form .errorInput{
+form .errorInput {
   display: flex;
   align-items: center;
   gap: 12px;
   margin: 14px 0px 0px;
 }
-form .errorInput p{
+form .errorInput p {
   color: rgba(255, 95, 110, 1);
-font-size: 16px;
-line-height: 12px;
+  font-size: 16px;
+  line-height: 12px;
 
-font-family: "cairoM";
-
+  font-family: "cairoM";
 }
-form .errorInput img{}
-form .fileInput{
+form .errorInput img {
+}
+form .fileInput {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2306,7 +2373,7 @@ form .fileInput{
   cursor: pointer;
   height: 100%;
 }
-form .fileInput p{
+form .fileInput p {
   color: rgba(179, 180, 183, 1);
   font-size: 18px;
   line-height: 32px;
@@ -2315,7 +2382,7 @@ form .fileInput p{
   cursor: pointer;
   padding: 0px 8px;
 }
-form .fileInput input{
+form .fileInput input {
   position: absolute;
   content: "";
   width: 100%;
@@ -2324,10 +2391,10 @@ form .fileInput input{
   top: 0;
   opacity: 0;
   cursor: pointer;
-
 }
-form .fileInput svg{}
-form .partImgFile{
+form .fileInput svg {
+}
+form .partImgFile {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -2335,21 +2402,20 @@ form .partImgFile{
   max-width: 100%;
   margin-top: 12px;
 }
-form .partImgFile .partImg{
+form .partImgFile .partImg {
   background: rgba(90, 66, 230, 0.1);
-padding: 10px 16px;
-border-radius: 40px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 10px;
+  padding: 10px 16px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
-form .partImgFile .partImg p{
+form .partImgFile .partImg p {
   font-size: 16px;
   font-family: "cairoM";
-line-height: 12px;
-color: var(--main_color);
-
+  line-height: 12px;
+  color: var(--main_color);
 }
 form .partImgFile .partImg svg {
   width: 18px;
@@ -2357,15 +2423,14 @@ form .partImgFile .partImg svg {
   background: rgba(90, 66, 230, 0.35);
   padding: 4px;
   border-radius: 50%;
-  min-width: 18PX;
-  cursor:pointer;
+  min-width: 18px;
+  cursor: pointer;
   transition: 0.3s;
 }
 form .partImgFile .partImg svg:hover {
   background: rgba(230, 66, 66, 0.35);
 }
 @media (min-width: 768px) {
-
 }
 @media (max-width: 992px) {
   .investors .content h2 {
@@ -2379,9 +2444,8 @@ form .partImgFile .partImg svg:hover {
   .investors .content form .formInput .parts.textArea textarea::placeholder {
     font-size: 14px;
   }
-  form .fileInput p{
+  form .fileInput p {
     font-size: 14px;
-  
   }
 }
 @media (max-width: 768px) {
@@ -2406,7 +2470,7 @@ form .partImgFile .partImg svg:hover {
     margin-bottom: 18px;
   }
   .investors form .chekError {
-    padding: 0px 20px;
+    padding: 0px 14px;
   }
   .investors form .chekError::before {
     background-size: 20px;
@@ -2419,37 +2483,84 @@ form .partImgFile .partImg svg:hover {
     right: auto;
   }
   form .mantine-Checkbox-root label {
+  }
+  form .checkPart p,
+  form .checkPart a {
     font-size: 16px;
   }
-  .mantine-Select-section{
-    
+  .mantine-Select-section {
     background-size: 12px;
-   
   }
-  form .errorInput img{
+  form .errorInput img {
     width: 18px;
     height: 18px;
   }
-  form .errorInput{
+  form .errorInput {
     gap: 8px;
   }
   form .errorInput p {
-    
     font-size: 14px;
-  
-}
-form .partImgFile {
+  }
+  form .partImgFile {
     gap: 10px;
     margin-top: 10px;
-}
-form .partImgFile .partImg {
-  
+  }
+  form .partImgFile .partImg {
     padding: 8px 12px;
     border-radius: 20px;
     gap: 10px;
-}
-form .partImgFile .partImg p {
+  }
+  form .partImgFile .partImg p {
     font-size: 14px;
-   
+  }
+  form .checkPart {
+    margin-top: 20px;
+    gap: 0px;
+  }
 }
+
+.pulse {
+  background-color: rgb(90 66 230 / 41%);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  position: relative;
+  transform: rotate3d(1, 1, 4, -211deg);
+}
+
+.ring {
+  position: absolute;
+  background-color: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  opacity: 0.8;
+  -webkit-animation: pulsing 5s 2s ease-out infinite;
+  animation: pulsing 5s 2s ease-out infinite;
+}
+.ring:nth-of-type(1) {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.ring:nth-of-type(2) {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+.ring:nth-of-type(3) {
+  -webkit-animation-delay: -1.5s;
+  animation-delay: -1.5s;
+}
+
+@-webkit-keyframes pulsing {
+  100% {
+    transform: scale(2.75);
+    opacity: 0;
+  }
+}
+
+@keyframes pulsing {
+  100% {
+    transform: scale(2.75);
+    opacity: 0;
+  }
 }

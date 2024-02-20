@@ -5,6 +5,7 @@ import Captin from "../../../../Components/Captin";
 import { Checkbox, Input, PasswordInput, Select } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useTranslations } from "next-intl";
+import { Link } from "../../../navigation";
 
 function page() {
   const t = useTranslations("captain");
@@ -257,13 +258,17 @@ function page() {
                   </div>
                 </div>
               </div>
+              <div className="checkPart">
               <Checkbox
                 defaultChecked
-                label={t("agree")}
                 color="#5a42e6"
                 radius="xl"
                 className="chekError"
               />
+              <p>
+              {t("agree")} <Link href="/conditions">{t("agree2")}</Link>
+              </p>
+              </div>
               <input
                 type="submit"
                 className="btn_page notActive"
@@ -1066,7 +1071,7 @@ function page() {
 
                     <div className="partInput">
                       <Select
-                        clearable
+                        
                         placeholder={t("nameCarDec")}
                         data={[
                           "مرسيدس بنز ",
@@ -1122,7 +1127,7 @@ function page() {
 
                     <div className="partInput">
                       <Select
-                        clearable
+                        
                         placeholder={t("yearCarDec")}
                         data={["2005", "2007", "2008", "2009"]}
                       />

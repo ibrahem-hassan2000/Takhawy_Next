@@ -100,9 +100,9 @@ function LayNav({ locale }) {
             <h2>{t("name")}</h2>
           </Link>
           <div className="navbar-toggler2">
-            <button className="btn-lang " type="button">
+            <Link href={'/#app'} className="btn-lang " type="button">
             {t("loadApp")}
-            </button>
+            </Link>
             <button
               className="navbar-toggler collapsed"
               type="button"
@@ -176,9 +176,9 @@ function LayNav({ locale }) {
               </li>
             </ul>
             <div className="endnav">
-              <button className="btn-lang btn-lang1" type="button">
+              <Link href={'/#app'} className="btn-lang btn-lang1" type="button">
               {t("loadApp")}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

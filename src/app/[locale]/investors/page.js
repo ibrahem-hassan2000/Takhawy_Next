@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import HeaderPage from "../../../../Components/HeaderPage";
 import { Checkbox, FileInput, Input, Textarea } from "@mantine/core";
 import { useTranslations } from "next-intl";
+import { Link } from "../../../navigation";
 
 function page() {
   const [investors, setInvestors] = useState("company");
@@ -301,13 +302,19 @@ function page() {
                   </div>
                 </div>
               </div>
+              <div className="checkPart">
               <Checkbox
                 defaultChecked
-                label={t("agree")}
                 color="#5a42e6"
                 radius="xl"
                 className="chekError"
               />
+              <p>
+              {t("agree")} <Link href="/conditions">{t("agree2")}</Link>
+              </p>
+              </div>
+              
+            
               <input
                 type="submit"
                 className="btn_page notActive"

@@ -93,7 +93,8 @@
     "cvPlace": "Upload files",
     "jopTitle": "message",
     "jopTitlePlace": "write",
-    "agree": "I have read and accept the terms and conditions",
+    "agree": "I have read and accept ",
+    "agree2": "the terms and conditions",
     "send": "send"
   },
   "captain": {
@@ -123,7 +124,8 @@
     "passPlace": "type password",
     "pass2": "Confirm Password",
     "pass2Place": "Type Password",
-    "agree": "I have read and accept the terms and conditions",
+    "agree": "I have read and accept ",
+    "agree2": "the terms and conditions",
     "identityTitle": "identity",
     "identityDec": "I upload my identity (front/back)",
     "numIdentityTitle": "identity number",
