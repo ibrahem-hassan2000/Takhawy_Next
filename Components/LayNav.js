@@ -10,7 +10,7 @@ function LayNav({ locale }) {
   const t =useTranslations("home.nav")
   return (
     <>
-      <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar fixed-top navbar-expand-lg ">
         <div className="container">
           <Link className="navbar-brand" href="/">
             <svg
