@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import "./globals.css";
+import { Link } from "../../navigation";
 
 export default function Home(params) {
   const t = useTranslations("home");
@@ -153,12 +154,12 @@ export default function Home(params) {
             <h3>{t("who.dec")}</h3>
             <h4> {t("who.title2")}</h4>
             <div className="join">
-              <a href="" className="joinTeam">
+              <Link href="/investors" className="joinTeam">
                 {t("who.joinTime")}
-              </a>
-              <a href="" className="joinCapt">
+              </Link>
+              <Link href="/captainsJoin" className="joinCapt">
                 {t("who.joinCap")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
