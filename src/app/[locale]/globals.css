@@ -529,7 +529,7 @@ footer .content .part1 ul li a:hover svg path {
 }
 footer .content .part2 {
   display: flex;
-  gap: 80px;
+  gap: 54px;
   flex: 1;
   padding: 42px 0px;
 }
@@ -557,9 +557,10 @@ footer .content .part2 .part ul li a {
   font-family: "cairoL";
   text-wrap: nowrap;
   color: black;
-  transform: 0.5s;
+  transition: 0.5s;
   position: relative;
 }
+
 footer .content .part2 .part ul li a::before {
   position: absolute;
   content: "";
@@ -579,6 +580,14 @@ footer .content .part2 .part ul li a:hover:before {
 }
 footer .content .part2 .part ul li a:hover {
   color: var(--main_color);
+}
+footer .content .part2 .part.mapLocation ul li a{
+  max-width: 200px;
+  text-wrap:wrap;
+  line-height: 26px;
+  display: block;
+  padding-bottom: 6px;
+  direction: rtl;
 }
 @media (max-width: 1270px) {
   footer .content .part2 {
@@ -809,6 +818,7 @@ footer .content .part2 .part ul li a:hover {
   height: 100px;
   object-fit: contain;
   z-index: -1;
+  display: none;
 }
 .header .content .img1 {
   top: 30px;
@@ -904,6 +914,7 @@ footer .content .part2 .part ul li a:hover {
 .location .content .part1 {
   flex: 1;
   max-width: 700px;
+  display: none;
 }
 .location .content .part1 h2 {
   color: rgba(90, 66, 230, 1);

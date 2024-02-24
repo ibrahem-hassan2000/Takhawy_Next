@@ -220,6 +220,14 @@ function Footer() {
                 </li>
               </ul>
             </div>
+            <div className="part mapLocation">
+              <h3>{t("title4")}</h3>
+              <ul>
+                <li>
+                  <a href="mailto:takhawy@gmail.com" >شركه NOB,طريق عثمان بن عفان,الرياض </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

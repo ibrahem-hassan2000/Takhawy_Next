@@ -158,21 +158,24 @@ function LayNav({ locale }) {
                 </Link>
               </li>
               <li className="nav-item lang">
-                <Link
+                {
+                  locale === "en" ?  <Link
                   href={pathname}
                   locale="ar"
-                  className={locale === "ar" ? "active" : ""}
+                  className={ "active" }
                 >
-                  عربي
-                </Link>
-                <span>/</span>
-                <Link
+                  العربيه
+                </Link> : <Link
                   href={pathname}
                   locale="en"
-                  className={locale === "en" ? "active" : ""}
+                  className={ "active" }
                 >
-                  ENG
+                  الانجليزيه
                 </Link>
+                }
+
+               
+               
               </li>
             </ul>
             <div className="endnav">
