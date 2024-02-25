@@ -1,11 +1,13 @@
 import { useTranslations } from "next-intl";
 import "./globals.css";
 import { Link } from "../../navigation";
+import  Dots  from "../../../Components/Dots";
 
 export default function Home(params) {
   const t = useTranslations("home");
   return (
     <main>
+       
       <section className="header">
         <div className="con">
           <div className="content">
@@ -30,6 +32,7 @@ export default function Home(params) {
           </div>
         </div>
       </section>
+      <Dots/>
       <section className="features">
         <div className="con">
           <div className="content">
