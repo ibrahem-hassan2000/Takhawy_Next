@@ -3553,3 +3553,87 @@ img.img-pharm {
   background: rgb(90 66 230 / 61%);
 }
 }
+
+/*notfication*/
+.mantine-Notification-root{
+  background: rgba(239, 236, 252, 1);
+  padding: 24px;
+  border-radius: 16px;
+  align-items: flex-start;
+}
+.mantine-Notifications-root{
+  max-width: 700px;
+}
+html[dir=ltr] .mantine-Notification-root{
+  direction: ltr;
+}
+.mantine-Notification-closeButton {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(90, 66, 230, 0.35);
+}
+.mantine-Notification-closeButton svg{
+  width: 10px;
+  height: 10px;
+}
+.mantine-Notification-closeButton svg path{
+  color: var(--main_color);
+}
+.mantine-Notification-icon{
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  position: relative;
+  
+}
+.mantine-Notification-icon::before{
+  inset: 0;
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-image: url('/images/notfication.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.mantine-Notification-title{
+  font-size: 16px;
+  font-family: "cairoB";
+  margin-bottom: 8px;
+}
+.mantine-Notification-description{
+  color: rgba(16, 24, 40, 1) !important;
+  font-family: "cairoL";
+
+}
+@media(max-width:600px){
+  .mantine-Notification-title {
+    font-size: 12px;
+    
+    margin-bottom: 4px;
+}
+.mantine-Notification-icon {
+  width: 26px;
+  height: 26px;
+ 
+}
+.mantine-Notification-root {
+  
+  padding: 12px 18px;
+
+}
+.mantine-Notification-closeButton {
+  width: 20px;
+  height: 20px;
+ 
+  min-width: 20px;
+  min-height: 20px;
+}
+.mantine-Notifications-root {
+ 
+  left: 12px !important;
+  
+}
+}

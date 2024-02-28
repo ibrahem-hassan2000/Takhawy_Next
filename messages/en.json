@@ -156,6 +156,8 @@
     "yearCarDec": "Select the year of production",
     "back": "Previous",
     "craete": "Create an account",
-    "next": "Next"
+    "next": "Next",
+    "notifTitle":"Your account has been created successfully!",
+    "notifMessage":"You can now log in as a captain through the app with ease!"
   }
 }

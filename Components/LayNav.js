@@ -174,8 +174,7 @@ function LayNav({ locale }) {
                 </Link>
                 }
 
-               
-               
+
               </li>
             </ul>
             <div className="endnav">
