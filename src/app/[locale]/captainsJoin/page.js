@@ -1167,10 +1167,9 @@ function page() {
                       state &&
                         notifications.show({
                           dir: "rtl",
-                          bottom: 100,
                           icon: true,
                           top: 20,
-                          autoClose: 600000,
+                          autoClose: 15000,
                           title: t("notifTitle"),
                           message: t("notifMessage"),
                         });
