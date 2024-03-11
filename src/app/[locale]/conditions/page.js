@@ -1,10 +1,12 @@
 import React from 'react'
 import HeaderPage from '../../../../Components/HeaderPage'
+import { useTranslations } from 'next-intl'
 
 function page() {
+  const t =useTranslations("home.footer")
   return (
     <>
-    <HeaderPage title={"الشروط والأحكام "} img={"/images/conditions.png"}/>
+    <HeaderPage title={t("conditions")} img={"/images/conditions.png"}/>
     <section className='policy'>
     <div className='con'>
     

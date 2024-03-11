@@ -1,38 +1,25 @@
 import { useTranslations } from "next-intl";
 import "./globals.css";
 import { Link } from "../../navigation";
-import  Dots  from "../../../Components/Dots";
 
 export default function Home(params) {
   const t = useTranslations("home");
   return (
     <main>
-       
       <section className="header">
         <div className="con">
           <div className="content">
-            <img src="/images/luggage.png" className="img img1" alt="luggage" />
-            <img src="/images/wifi.png" className="img img2" alt="luggage" />
-            <img
-              src="/images/bluetooth.png"
-              className="img img3"
-              alt="luggage"
-            />
-            <img src="/images/food.png" className="img img4" alt="luggage" />
-            <img src="/images/cable.png" className="img img5" alt="luggage" />
-            <img src="/images/massage.png" className="img img6" alt="luggage" />
-            <img src="/images/music.png" className="img img7" alt="luggage" />
-            <img src="/images/smoking.png" className="img img8" alt="luggage" />
-            <h1>
-              {t("about.title1")}
-              <br />
-              <span> {t("about.title2")}</span>
-            </h1>
-            <p>{t("about.dec")}</p>
+            <div className="boxImg">
+              <img src="/images/headerImg.webp" alt="header Img" />
+            </div>
+
+            <div className="dec">
+              <h1>{t("about.title1")}</h1>
+              <p>{t("about.dec")}</p>
+            </div>
           </div>
         </div>
       </section>
-      <Dots/>
       <section className="features">
         <div className="con">
           <div className="content">
@@ -70,17 +57,33 @@ export default function Home(params) {
           </div>
         </div>
       </section>
-
+      <section className="about">
+        <div className="con">
+          <div className="content">
+            <h2> {t("who.title1")}</h2>
+            <h3>{t("who.dec")}</h3>
+            <h4> {t("who.title2")}</h4>
+            <div className="join">
+              <Link href="/investors" className="joinTeam">
+                {t("who.joinTime")}
+              </Link>
+              <Link href="/captainsJoin" className="joinCapt">
+                {t("who.joinCap")}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="app" id="app">
         <div className="con">
           <div className="content">
             <div className="part1">
-              <div className="pulse">
-                <div className="ring"></div>
-                <div className="ring"></div>
-                <div className="ring"></div>
-                <div className="ring"></div>
-              </div>
+              {/* <div class="pulse">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+              </div> */}
               <img src="/images/AppImg.png" alt="app" />
             </div>
             <div className="part2">
@@ -150,19 +153,39 @@ export default function Home(params) {
           </div>
         </div>
       </section>
-      <section className="about">
+
+      <section className="goals">
         <div className="con">
           <div className="content">
-            <h2> {t("who.title1")}</h2>
-            <h3>{t("who.dec")}</h3>
-            <h4> {t("who.title2")}</h4>
-            <div className="join">
-              <Link href="/investors" className="joinTeam">
-                {t("who.joinTime")}
-              </Link>
-              <Link href="/captainsJoin" className="joinCapt">
-                {t("who.joinCap")}
-              </Link>
+            <div className="part">
+              <h2>رؤيتنا</h2>
+              <p>
+                أن نكون رواد في مجال النقل التشاركي ومن ضمن وسائل النقل المعتمدة
+                في المملكة العربية السعودية.
+              </p>
+            </div>
+            <div className="part">
+              <h2>رسالتنا</h2>
+              <p>
+                نحن نسعي في خفض تكاليف رحلة المسافر بنسبة تتراوح من 50% الي 75%.
+              </p>
+            </div>
+            <div className="part">
+              <h2>قيمنا</h2>
+              <p>
+                السرية: المحافظة علي بيانات العملاء المدخلة
+                <br />
+                المتابعة: مراقبة خط السير الرحلة
+                <br />
+                الجودة: انتقاء أفضل المركبات ورفع مستويات الخدمة
+              </p>
+            </div>
+            <div className="part">
+              <h2>الهدف الاستراتيجي</h2>
+              <p>
+                ان نكون من الأوائل في هذا المجال المستحدث لدينا والاستفادة من
+                عمليات الاستحوااذ الاستراتيجية في مدن المملكة.
+              </p>
             </div>
           </div>
         </div>

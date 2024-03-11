@@ -9,8 +9,8 @@
       "name":"Takhawy"
     },
     "about": {
-      "title1": "Where do you want ",
-      "title2": "to meet my brother?",
+      "title1": "Where do you want to meet my brother? ",
+      "title2": "",
       "dec": "Discover the simple and complete world of travel through Tawazeez app. Get financial savings and social connection, our app combines easy access to cars and ride-sharing for an unforgettable experience."
     },
     "ad": {
@@ -160,4 +160,5 @@
     "notifTitle":"Your account has been created successfully!",
     "notifMessage":"You can now log in as a captain through the app with ease!"
   }
+ 
 }

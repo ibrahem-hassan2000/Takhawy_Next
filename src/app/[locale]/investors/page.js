@@ -1,14 +1,79 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderPage from "../../../../Components/HeaderPage";
 import { Checkbox, FileInput, Input, Textarea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { Link } from "../../../navigation";
+import axios from "axios";
 
 function page() {
   const [investors, setInvestors] = useState("company");
-  const t = useTranslations('investor');
+  const t = useTranslations("investor");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState(1);
+  const [terms, setTerms] = useState(false);
+  const [file, setFile] = useState("");
+  const [nameErorr, setNameErorr] = useState("");
+  const [emailErorr, setEmailErorr] = useState("");
+  const [mobileErorr, setMobileErorr] = useState("");
 
+  let CompleteData =
+    name && surname && email && mobile && message && type && terms
+      ? true
+      : false;
+  console.log("====================================");
+  console.log(CompleteData);
+  console.log("====================================");
+  console.log(name);
+  console.log(surname);
+  console.log(email);
+  console.log(mobile);
+  console.log(message);
+  console.log(type);
+  console.log(terms);
+  console.log(file);
+
+  const handellogin = () => {
+    const po = axios
+      .post(
+        "https://dashboard.takhawe.com/api/admin/investors",
+        {
+          name: name,
+          surname: surname,
+          email: email,
+          mobile: mobile,
+          message: message,
+          type: type,
+          terms_accepted: terms === true ? 1 :0,
+          files: file,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Accept: "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((res) => {
+        setNameErorr(res.response.data?.errors?.name?res.response.data.errors.name[0]:null);
+        setEmailErorr(res.response.data?.errors?.email?res.response.data.errors.email[0]:null);
+        setMobileErorr(res.response?.data?.errors?.mobile?res.response?.data?.errors?.mobile[0] : null);
+        console.log(res);
+      });
+  };
+
+
+
+
+
+  useEffect(() => {}, []);
   return (
     <>
       <HeaderPage
@@ -27,6 +92,7 @@ function page() {
                   onClick={(e) => {
                     e.preventDefault();
                     setInvestors("company");
+                    setType(1);
                   }}
                 >
                   {t("company")}
@@ -36,6 +102,7 @@ function page() {
                   onClick={(e) => {
                     e.preventDefault();
                     setInvestors("one");
+                    setType(2);
                   }}
                 >
                   {t("one")}
@@ -67,9 +134,20 @@ function page() {
                     </svg>
 
                     <div className="partInput">
-                      <Input placeholder={t("namePlac")} />
+                      <Input
+                        error={nameErorr}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
+                        placeholder={t("namePlac")}
+                      />
                     </div>
                   </div>
+                  {nameErorr && (
+                    <div className="errorInput">
+                      <p>{nameErorr}</p>
+                    </div>
+                  )}
                 </div>
                 <div className="parts ">
                   <label>{t("name2")}</label>
@@ -132,7 +210,12 @@ function page() {
                     </svg>
 
                     <div className="partInput">
-                      <Input placeholder={t("name2Place")} />
+                      <Input
+                        onChange={(e) => {
+                          setSurname(e.target.value);
+                        }}
+                        placeholder={t("name2Place")}
+                      />
                     </div>
                   </div>
                 </div>
@@ -165,9 +248,20 @@ function page() {
                     </svg>
 
                     <div className="partInput">
-                      <Input placeholder={t("emailPlac")} />
+                      <Input
+                        error={emailErorr}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                        placeholder={t("emailPlac")}
+                      />
                     </div>
                   </div>
+                  {emailErorr && (
+                    <div className="errorInput">
+                      <p>{emailErorr}</p>
+                    </div>
+                  )}
                 </div>
                 <div className="parts ">
                   <label>{t("num")} </label>
@@ -211,9 +305,20 @@ function page() {
 
                     <p className="codePhone">+966</p>
                     <div className="partInput">
-                      <Input placeholder={t("numPlace")} />
+                      <Input
+                        error={mobileErorr}
+                        onChange={(e) => {
+                          setMobile(e.target.value);
+                        }}
+                        placeholder={t("numPlace")}
+                      />
                     </div>
                   </div>
+                  {mobileErorr && (
+                    <div className="errorInput">
+                      <p>{mobileErorr}</p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="parts  ">
@@ -285,7 +390,13 @@ function page() {
                     </svg>
 
                     <div className="partInput">
-                      <FileInput clearable placeholder={t("cvPlace")} />
+                      <FileInput
+                        onChange={(e) => {
+                          setFile(e);
+                        }}
+                        clearable
+                        placeholder={t("cvPlace")}
+                      />
                     </div>
                   </div>
                 </div>
@@ -294,32 +405,40 @@ function page() {
                   <div className="part">
                     <div className="partInput">
                       <Textarea
-                        placeholder= {t("jopTitlePlace")}
+                        placeholder={t("jopTitlePlace")}
                         autosize
                         minRows={5}
+                        onChange={(e) => {
+                          setMessage(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="checkPart">
-              <Checkbox
-                defaultChecked
-                color="#5a42e6"
-                radius="xl"
-                className="chekError"
-              />
-              <p>
-              {t("agree")} <Link href="/conditions">{t("agree2")}</Link>
-              </p>
+                <Checkbox
+                  checked={terms}
+                  color="#5a42e6"
+                  radius="xl"
+                  className={ terms?"":" chekError"}
+                  onChange={(e) => {
+                    setTerms(e.currentTarget.checked);
+                  }}
+                />
+                <p>
+                  {t("agree")} <Link href="/conditions">{t("agree2")}</Link>
+                </p>
               </div>
-              
-            
+
               <input
                 type="submit"
-                className="btn_page notActive"
-                disabled
+                className={CompleteData ? "btn_page " : "btn_page notActive"}
+                disabled={!CompleteData}
                 value={t("send")}
+                onClick={(e) => {
+                  e.preventDefault(), handellogin();
+                }}
               />
             </form>
           </div>
