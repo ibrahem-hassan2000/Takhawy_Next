@@ -78,12 +78,12 @@ export default function Home(params) {
         <div className="con">
           <div className="content">
             <div className="part1">
-              {/* <div class="pulse">
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-              </div> */}
+              <div className="pulse">
+                <div className="ring"></div>
+                <div className="ring"></div>
+                <div className="ring"></div>
+                <div className="ring"></div>
+              </div>
               <img src="/images/AppImg.png" alt="app" />
             </div>
             <div className="part2">
