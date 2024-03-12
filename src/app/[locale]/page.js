@@ -78,12 +78,12 @@ export default function Home(params) {
         <div className="con">
           <div className="content">
             <div className="part1">
-              <div className="pulse">
-                <div className="ring"></div>
-                <div className="ring"></div>
-                <div className="ring"></div>
-                <div className="ring"></div>
-              </div>
+              {/* <div class="pulse">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+              </div> */}
               <img src="/images/AppImg.png" alt="app" />
             </div>
             <div className="part2">
@@ -158,38 +158,37 @@ export default function Home(params) {
         <div className="con">
           <div className="content">
             <div className="part">
-              <h2>رؤيتنا</h2>
+              <h2>  {t("goals.title1")}</h2>
               <p>
-                أن نكون رواد في مجال النقل التشاركي ومن ضمن وسائل النقل المعتمدة
-                في المملكة العربية السعودية.
+              {t("goals.dec1")}
               </p>
             </div>
             <div className="part">
-              <h2>رسالتنا</h2>
+              <h2>{t("goals.title2")}</h2>
               <p>
-                نحن نسعي في خفض تكاليف رحلة المسافر بنسبة تتراوح من 50% الي 75%.
+              {t("goals.dec2")}
               </p>
             </div>
             <div className="part">
-              <h2>قيمنا</h2>
+              <h2>{t("goals.title3")}</h2>
               <p>
-                السرية: المحافظة علي بيانات العملاء المدخلة
+              {t("goals.dec31")}
                 <br />
-                المتابعة: مراقبة خط السير الرحلة
+                {t("goals.dec32")}
                 <br />
-                الجودة: انتقاء أفضل المركبات ورفع مستويات الخدمة
+                {t("goals.dec33")}
               </p>
             </div>
             <div className="part">
-              <h2>الهدف الاستراتيجي</h2>
+              <h2>{t("goals.title4")}</h2>
               <p>
-                ان نكون من الأوائل في هذا المجال المستحدث لدينا والاستفادة من
-                عمليات الاستحوااذ الاستراتيجية في مدن المملكة.
+              {t("goals.dec4")}
               </p>
             </div>
           </div>
         </div>
       </section>
+
       <section className="location">
         <div className="content">
           <div className="part1">

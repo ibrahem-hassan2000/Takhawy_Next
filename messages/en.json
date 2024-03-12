@@ -53,6 +53,18 @@
       "captain": "captains",
       "conditions": "terms and conditions",
       "privacy": "Privacy Policy"
+    },
+    "goals": {
+      "title1": "Our Vision",
+      "dec1": "To be pioneers in the field of shared transportation and among the approved means of transportation in the Kingdom of Saudi Arabia.",
+      "title2": "Our Message",
+      "dec2": "We seek to reduce the costs of the traveler's trip by a rate ranging from 50% to 75%",
+      "title3": "Our Values",
+      "dec31": "Confidentiality: Maintaining entered customer data",
+      "dec32": "Continue: Monitor itinerary",
+      "dec33": "Quality: selecting the best vehicles and raising service levels",
+      "title4": "Strategic Objective ",
+      "dec4": " To be one of the first in this new field and benefit from strategic acquisitions in the cities of the Kingdom."
     }
   },
   "jobs": {
