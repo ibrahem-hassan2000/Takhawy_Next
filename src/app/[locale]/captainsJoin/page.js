@@ -1,16 +1,85 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderPage from "../../../../Components/HeaderPage";
 import Captin from "../../../../Components/Captin";
-import { Checkbox, Input, PasswordInput, Select } from "@mantine/core";
+import {
+  Checkbox,
+  Input,
+  LoadingOverlay,
+  PasswordInput,
+  Select,
+} from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useTranslations } from "next-intl";
 import { Link } from "../../../navigation";
+import axios from "axios";
+import { getHomePage } from "../../../../Components/GetApi";
 
-function page() {
-  const [state, setState] = useState(true);
+function page({ params }) {
   const [FormOne, setFormOne] = useState(true);
   const t = useTranslations("captain");
+  /*data*/
+  const [dataColor, setDataColor] = useState([]);
+  const [carType, setCarType] = useState([]);
+  const [seatCounts, setSeatCounts] = useState([]);
+  const [carClass, setcarClass] = useState([]);
+  const [carName, setcarName] = useState([]);
+
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [terms, setTerms] = useState(false);
+  const [nameErorr, setNameErorr] = useState("");
+  const [genderErorr, setGenderErorr] = useState("");
+  const [emailErorr, setEmailErorr] = useState("");
+  const [mobileErorr, setMobileErorr] = useState("");
+  const [passwordErorr, setPasswordErorr] = useState("");
+  const [confirmPasswordErorr, setConfirmPasswordErorr] = useState("");
+  const [termsErorr, setTermsErorr] = useState("");
+  const [Loading, setLoading] = useState(false);
+  /*data 2*/
+  const [GetdataColor, setGetDataColor] = useState("");
+  const [GetcarType, setGetCarType] = useState("");
+  const [GetseatCounts, setGetSeatCounts] = useState("");
+  const [GetcarClass, setGetcarClass] = useState("");
+  const [GetcarName, setGetcarName] = useState("");
+  const [yearCar, setyearCar] = useState("");
+  const [idNumCar, setIdNumCar] = useState("");
+  const [serialNumCar, setSerialNumCar] = useState("");
+  const [vehicleNumCar, setVehicleNumCar] = useState("");
+  /*Error data 2*/
+  const [ErrorGetdataColor, setErrorGetDataColor] = useState("");
+  const [ErrorGetcarType, setErrorGetCarType] = useState("");
+  const [ErrorGetseatCounts, setErrorGetSeatCounts] = useState("");
+  const [ErrorGetcarClass, setErrorGetcarClass] = useState("");
+  const [ErrorGetcarName, setErrorGetcarName] = useState("");
+  const [ErroryearCar, setErroryearCar] = useState("");
+  const [ErroridNumCar, setErrorIdNumCar] = useState("");
+  const [ErrorserialNumCar, setErrorSerialNumCar] = useState("");
+  const [ErrorvehicleNumCar, setErrorVehicleNumCar] = useState("");
+  const [ErrorFile1, setErrorFile1] = useState("");
+  const [ErrorFile2, setErrorFile2] = useState("");
+  const [ErrorFile3, setErrorFile3] = useState("");
+  const [ErrorFile4, setErrorFile4] = useState("");
+  let CompleteData =
+    name && gender && email && mobile && password && confirmPassword && terms
+      ? true
+      : false;
+  let AllData =
+    GetdataColor &&
+    GetcarType &&
+    GetseatCounts &&
+    GetcarClass &&
+    GetcarName &&
+    yearCar &&
+    idNumCar &&
+    serialNumCar &&
+    vehicleNumCar
+      ? true
+      : false;
   const [selectedFile1, setSelectedFile1] = useState([]);
   const [selectedFile2, setSelectedFile2] = useState([]);
   const [selectedFile3, setSelectedFile3] = useState([]);
@@ -43,9 +112,280 @@ function page() {
       setSelectedFile4((oldArray) => [...oldArray, selectedFile4]);
     }
   };
-  console.log("====================================");
-  console.log(FormOne);
-  console.log("====================================");
+
+  const handelFormOne = () => {
+    setNameErorr("");
+    setEmailErorr("");
+    setMobileErorr("");
+    setTermsErorr("");
+    setGenderErorr("");
+    setPasswordErorr("");
+    setConfirmPasswordErorr("");
+    setLoading(true);
+    const po = axios
+      .post(
+        "https://dashboard.takhawe.com/api/captains",
+        {
+          name: name,
+          email: email,
+          mobile: mobile,
+          gender: gender,
+          password: password,
+          password_confirmation: confirmPassword,
+          terms_accepted: terms === true ? 1 : 0,
+          form: 1,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Accept-Language": params.locale,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+      
+res.data.status === 200 ? setFormOne(false) :null
+        
+      })
+      .catch((res) => {
+        setLoading(false);
+        console.log(res);
+
+        setNameErorr(
+          res.response.data?.errors?.name
+            ? res.response.data.errors.name[0]
+            : null
+        );
+        setEmailErorr(
+          res.response.data?.errors?.email
+            ? res.response.data.errors.email[0]
+            : null
+        );
+        setMobileErorr(
+          res.response?.data?.errors?.mobile
+            ? res.response?.data?.errors?.mobile[0]
+            : null
+        );
+        setTermsErorr(
+          res.response?.data?.errors?.terms_accepted
+            ? res.response?.data?.errors?.terms_accepted[0]
+            : null
+        );
+        setGenderErorr(
+          res.response?.data?.errors?.gender
+            ? res.response?.data?.errors?.gender[0]
+            : null
+        );
+
+        password.length >= 8
+          ? setConfirmPasswordErorr(
+              res.response?.data?.errors?.password
+                ? res.response?.data?.errors?.password[0]
+                : null
+            )
+          : setPasswordErorr(
+              res.response?.data?.errors?.password
+                ? res.response?.data?.errors?.password[0]
+                : null
+            );
+      });
+  };
+
+  useEffect(() => {
+    FetchDataOFHomePage();
+  }, []);
+
+  const FetchDataOFHomePage = async () => {
+    const AllData = await getHomePage();
+    if (AllData.error) {
+      console.log(AllData.error);
+    }
+    setDataColor([]);
+    setSeatCounts([]);
+    setCarType([]);
+    setcarClass([]);
+    setcarName([]);
+    AllData.colors.map((itemColor, i) => {
+      const item = {
+        value: `${itemColor.id}`,
+        label: itemColor.name[params.locale],
+      };
+      setDataColor((current) => [...current, item]);
+    });
+    AllData.seat_counts.map((itemSeat, i) => {
+      const item = { value: `${itemSeat.id}`, label: itemSeat.count };
+      setSeatCounts((current) => [...current, item]);
+    });
+    AllData.vehicle_types.map((itemType, i) => {
+      const item = {
+        value: `${itemType.id}`,
+        label: itemType.name[params.locale],
+      };
+      setCarType((current) => [...current, item]);
+    });
+    AllData.vehicle_categories.map((itemCarClass, i) => {
+      const item = {
+        value: `${itemCarClass.id}`,
+        label: itemCarClass.name[params.locale],
+      };
+      setcarClass((current) => [...current, item]);
+    });
+    AllData.vehicles.map((itemCarName, i) => {
+      const item = {
+        value: `${itemCarName.id}`,
+        label: itemCarName.name[params.locale],
+      };
+      setcarName((current) => [...current, item]);
+    });
+  };
+  const handelFormTwo = () => {
+    const url = new URL("https://dashboard.takhawe.com/api/captains");
+    const body = new FormData();
+    setNameErorr("");
+    setEmailErorr("");
+    setMobileErorr("");
+    setTermsErorr("");
+    setGenderErorr("");
+    setPasswordErorr("");
+    setConfirmPasswordErorr("");
+    setErrorGetDataColor("");
+    setErrorGetCarType("");
+    setErrorGetSeatCounts("");
+    setErrorGetcarClass("");
+    setErrorGetcarName("");
+    setErroryearCar("");
+    setErrorIdNumCar("");
+    setErrorSerialNumCar("");
+    setErrorVehicleNumCar("");
+    setErrorFile1("");
+    setErrorFile2("");
+    setErrorFile3("");
+    setErrorFile4("");
+    setLoading(true);
+    body.append("name", name);
+    body.append("email", email);
+    body.append("mobile", mobile);
+    body.append("gender", 1);
+    body.append("password", password);
+    body.append("password_confirmation", confirmPassword);
+    body.append("terms_accepted", 1);
+    body.append("color_id", GetdataColor);
+    body.append("vehicle_type_id", GetcarType);
+    body.append("seat_count_id", GetseatCounts);
+    body.append("form", 2);
+    body.append("vehicle_category_id", GetcarClass);
+    body.append("vehicle_id", GetcarName);
+    body.append("production_year", yearCar);
+    body.append("identity_number", idNumCar);
+    body.append("serial_number", serialNumCar);
+    body.append("vehicle_number", vehicleNumCar);
+
+    if (selectedFile1.length > 0) {
+      selectedFile1.map((item, i) => {
+        body.append(`identity_types[${i}]`, item);
+      });
+    }
+    if (selectedFile2.length > 0) {
+      selectedFile2.map((item, i) => {
+        body.append(`driving_licenses[${i}]`, item);
+      });
+    }
+    if (selectedFile3.length > 0) {
+      selectedFile3.map((item, i) => {
+        body.append(`vehicle_registrations[${i}]`, item);
+      });
+    }
+    if (selectedFile4.length > 0) {
+      selectedFile4.map((item, i) => {
+        body.append(`vehicle_images[${i}]`, item);
+      });
+    }
+    const po = axios
+      .post(url, body, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          "Accept-Language": params.locale,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+        setName("");
+        setEmail("");
+        setMobile("");
+        setTerms("");
+        setFormOne(false);
+        notifications.show({
+          dir: "rtl",
+          icon: true,
+          top: 20,
+          autoClose: 15000,
+          title: t("notifTitle"),
+          message: t("notifMessage"),
+        });
+      })
+      .catch((res) => {
+        setLoading(false);
+        console.log(res);
+
+        setErrorGetDataColor(
+          res.response.data?.errors?.color_id
+            ? res.response.data.errors.color_id[0]
+            : null
+        );
+
+        setErroryearCar(
+          res.response?.data?.errors?.production_year
+            ? res.response?.data?.errors?.production_year[0]
+            : null
+        );
+        setErrorIdNumCar(
+          res.response?.data?.errors?.identity_number
+            ? res.response?.data?.errors?.identity_number[0]
+            : null
+        );
+        setErrorGetSeatCounts(
+          res.response?.data?.errors?.seat_count_id
+            ? res.response?.data?.errors?.seat_count_id[0]
+            : null
+        );
+        setErrorSerialNumCar(
+          res.response?.data?.errors?.serial_number
+            ? res.response?.data?.errors?.serial_number[0]
+            : null
+        );
+        setErrorGetcarClass(
+          res.response?.data?.errors?.vehicle_category_id
+            ? res.response?.data?.errors?.vehicle_category_id[0]
+            : null
+        );
+        setErrorGetcarName(
+          res.response?.data?.errors?.vehicle_id
+            ? res.response?.data?.errors?.vehicle_id[0]
+            : null
+        );
+        setErrorVehicleNumCar(
+          res.response?.data?.errors?.vehicle_number
+            ? res.response?.data?.errors?.vehicle_number[0]
+            : null
+        );
+        setErrorGetCarType(
+          res.response?.data?.errors?.vehicle_type_id
+            ? res.response?.data?.errors?.vehicle_type_id[0]
+            : null
+        );
+        setErrorGetCarType(
+          res.response?.data?.errors?.vehicle_type_id
+            ? res.response?.data?.errors?.vehicle_type_id[0]
+            : null
+        );
+      });
+  };
+
   return (
     <>
       <HeaderPage
@@ -54,6 +394,12 @@ function page() {
         img={"/images/captain.png"}
       />
       <Captin />
+      <LoadingOverlay
+        visible={Loading}
+        loaderProps={{ color: "#5a42e6" }}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+      />
       {FormOne ? (
         <section className="investors">
           <div className="con">
@@ -86,9 +432,21 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <Input placeholder={t("namePlac")} />
+                        <Input
+                          value={name}
+                          error={nameErorr}
+                          placeholder={t("namePlac")}
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
+                        />
                       </div>
                     </div>
+                    {nameErorr && (
+                      <div className="errorInput">
+                        <p>{nameErorr}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("gender")} </label>
@@ -132,9 +490,23 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <Input placeholder={t("genderPlace")} />
+                        <Select
+                          placeholder={t("genderPlace")}
+                          onChange={setGender}
+                          value={gender}
+                          error={genderErorr}
+                          data={[
+                            { value: "1", label: "Male" },
+                            { value: "2", label: "Female" },
+                          ]}
+                        />
                       </div>
                     </div>
+                    {genderErorr && (
+                      <div className="errorInput">
+                        <p>{genderErorr}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("email")} </label>
@@ -165,9 +537,21 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <Input placeholder={t("emailPlac")} />
+                        <Input
+                          value={email}
+                          error={emailErorr}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                          placeholder={t("emailPlac")}
+                        />
                       </div>
                     </div>
+                    {emailErorr && (
+                      <div className="errorInput">
+                        <p>{emailErorr}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("num")} </label>
@@ -211,9 +595,22 @@ function page() {
 
                       <p className="codePhone">+966</p>
                       <div className="partInput">
-                        <Input placeholder={t("numPlace")} />
+                        <Input
+                          value={mobile}
+                          maxLength={9}
+                          error={mobileErorr}
+                          onChange={(e) => {
+                            setMobile(e.target.value);
+                          }}
+                          placeholder={t("numPlace")}
+                        />
                       </div>
                     </div>
+                    {mobileErorr && (
+                      <div className="errorInput">
+                        <p>{mobileErorr}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("pass")} </label>
@@ -234,9 +631,21 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <PasswordInput placeholder={t("passPlace")} />
+                        <PasswordInput
+                          value={password}
+                          error={passwordErorr}
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                          placeholder={t("passPlace")}
+                        />
                       </div>
                     </div>
+                    {passwordErorr && (
+                      <div className="errorInput">
+                        <p>{passwordErorr}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("pass2")} </label>
@@ -257,29 +666,50 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <PasswordInput placeholder={t("pass2Place")} />
+                        <PasswordInput
+                          value={confirmPassword}
+                          error={confirmPasswordErorr}
+                          onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                          }}
+                          placeholder={t("pass2Place")}
+                        />
                       </div>
                     </div>
+                    {confirmPasswordErorr && (
+                      <div className="errorInput">
+                        <p>{confirmPasswordErorr}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="checkPart">
                   <Checkbox
-                    defaultChecked
+                    checked={terms}
                     color="#5a42e6"
                     radius="xl"
-                    className="chekError"
+                    className={termsErorr ? " chekError" : ""}
+                    onChange={(e) => {
+                      setTerms(e.currentTarget.checked);
+                    }}
                   />
                   <p>
                     {t("agree")} <Link href="/conditions">{t("agree2")}</Link>
                   </p>
                 </div>
+                {termsErorr && (
+                  <div className="errorInput">
+                    <p>{termsErorr}</p>
+                  </div>
+                )}
                 <input
                   type="submit"
-                  className="btn_page notActive"
+                  className={CompleteData ? "btn_page " : "btn_page notActive"}
+                  disabled={!CompleteData}
                   value={t("next")}
                   onClick={(e) => {
                     e.preventDefault();
-                    setFormOne(false);
+                    handelFormOne();
                   }}
                 />
               </form>
@@ -363,6 +793,12 @@ function page() {
                           );
                         })}
                     </div>
+                    {ErrorFile1 && (
+                      <div className="errorInput">
+                        <img src="/images/note.png" alt="error" />
+                        <p>{ErrorFile1} </p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("numIdentityTitle")} </label>
@@ -383,9 +819,19 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <Input placeholder={t("numIdentityDec")} />
+                        <Input
+                          onChange={(e) => {
+                            setIdNumCar(e.target.value);
+                          }}
+                          placeholder={t("numIdentityDec")}
+                        />
                       </div>
                     </div>
+                    {ErroridNumCar && (
+                      <div className="errorInput">
+                        <p>{ErroridNumCar}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts  ">
                     <label>{t("licenseTitle")} </label>
@@ -469,6 +915,12 @@ function page() {
                           );
                         })}
                     </div>
+                    {ErrorFile2 && (
+                      <div className="errorInput">
+                        <img src="/images/note.png" alt="error" />
+                        <p>{ErrorFile2} </p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts  ">
                     <label>{t("cartTitle")} </label>
@@ -564,6 +1016,12 @@ function page() {
                           );
                         })}
                     </div>
+                    {ErrorFile3 && (
+                      <div className="errorInput">
+                        <img src="/images/note.png" alt="error" />
+                        <p>{ErrorFile3} </p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="parts ">
@@ -727,9 +1185,19 @@ function page() {
                       </svg>
 
                       <div className="partInput">
-                        <Input placeholder={t("serialDec")} />
+                        <Input
+                          onChange={(e) => {
+                            setSerialNumCar(e.target.value);
+                          }}
+                          placeholder={t("serialDec")}
+                        />
                       </div>
                     </div>
+                    {ErrorserialNumCar && (
+                      <div className="errorInput">
+                        <p>{ErrorserialNumCar}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label> {t("NumCarTitle")} </label>
@@ -737,9 +1205,19 @@ function page() {
                       <img src="/images/carNum.png" alt="carNum" />
 
                       <div className="partInput">
-                        <Input placeholder={t("NumCarDec")} />
+                        <Input
+                          onChange={(e) => {
+                            setVehicleNumCar(e.target.value);
+                          }}
+                          placeholder={t("NumCarDec")}
+                        />
                       </div>
                     </div>
+                    {ErrorvehicleNumCar && (
+                      <div className="errorInput">
+                        <p>{ErrorvehicleNumCar}</p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="parts  ">
@@ -836,10 +1314,13 @@ function page() {
                           );
                         })}
                     </div>
-                    <div className="errorInput">
-                      <img src="/images/note.png" alt="error" />
-                      <p>{t("errorImgCar")} </p>
-                    </div>
+
+                    {ErrorFile4 && (
+                      <div className="errorInput">
+                        <img src="/images/note.png" alt="error" />
+                        <p>{ErrorFile4} </p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="formInput formInput2  ">
@@ -887,11 +1368,23 @@ function page() {
 
                       <div className="partInput">
                         <Select
+                          searchable
+                          clearable
+                          onChange={setGetcarClass}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                           placeholder={t("classDec")}
-                          data={["شاحنة", "2شاحنة", "3شاحنة", "4شاحنة"]}
+                          data={carClass}
                         />
                       </div>
                     </div>
+                    {ErrorGetcarClass && (
+                      <div className="errorInput">
+                        <p>{ErrorGetcarClass}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label> {t("seatsTitle")} </label>
@@ -937,11 +1430,23 @@ function page() {
 
                       <div className="partInput">
                         <Select
+                          searchable
+                          clearable
+                          onChange={setGetSeatCounts}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                           placeholder={t("seatsDec")}
-                          data={["4", "7", "5", "2"]}
+                          data={seatCounts}
                         />
                       </div>
                     </div>
+                    {ErrorGetseatCounts && (
+                      <div className="errorInput">
+                        <p>{ErrorGetseatCounts}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label> {t("colorTitle")} </label>
@@ -988,10 +1493,22 @@ function page() {
                       <div className="partInput">
                         <Select
                           placeholder={t("colorDec")}
-                          data={["رمادي", "ابيض", "اسود", "احمر"]}
+                          searchable
+                          clearable
+                          onChange={setGetDataColor}
+                          data={dataColor}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                         />
                       </div>
                     </div>
+                    {ErrorGetdataColor && (
+                      <div className="errorInput">
+                        <p>{ErrorGetdataColor}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label> {t("typeTitle")} </label>
@@ -1037,11 +1554,23 @@ function page() {
 
                       <div className="partInput">
                         <Select
+                          searchable
+                          clearable
+                          onChange={setGetCarType}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                           placeholder={t("typeDec")}
-                          data={["مرسيدس", "هونداي", "كيا", "تيوتا"]}
+                          data={carType}
                         />
                       </div>
                     </div>
+                    {ErrorGetcarType && (
+                      <div className="errorInput">
+                        <p>{ErrorGetcarType}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label> {t("nameCarTitle")}</label>
@@ -1087,16 +1616,23 @@ function page() {
 
                       <div className="partInput">
                         <Select
+                          searchable
+                          clearable
+                          onChange={setGetcarName}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                           placeholder={t("nameCarDec")}
-                          data={[
-                            "مرسيدس بنز ",
-                            "مرسيدس بنز 1",
-                            "مرسيدس بنز G-Wagon2",
-                            "مرسيدس بنز G-Wagon5",
-                          ]}
+                          data={carName}
                         />
                       </div>
                     </div>
+                    {ErrorGetcarName && (
+                      <div className="errorInput">
+                        <p>{ErrorGetcarName}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="parts ">
                     <label>{t("yearCarTitle")} </label>
@@ -1142,11 +1678,23 @@ function page() {
 
                       <div className="partInput">
                         <Select
+                          searchable
+                          clearable
+                          onChange={setyearCar}
+                          withScrollArea={false}
+                          styles={{
+                            dropdown: { maxHeight: 200, overflowY: "auto" },
+                          }}
                           placeholder={t("yearCarDec")}
                           data={["2005", "2007", "2008", "2009"]}
                         />
                       </div>
                     </div>
+                    {ErroryearCar && (
+                      <div className="errorInput">
+                        <p>{ErroryearCar}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1164,18 +1712,11 @@ function page() {
                   <input
                     onClick={(e) => {
                       e.preventDefault();
-                      state &&
-                        notifications.show({
-                          dir: "rtl",
-                          icon: true,
-                          top: 20,
-                          autoClose: 15000,
-                          title: t("notifTitle"),
-                          message: t("notifMessage"),
-                        });
+                      handelFormTwo();
                     }}
+                    disabled={!AllData}
                     type="submit"
-                    className="btn_page notActive"
+                    className={AllData ? "btn_page " : "btn_page notActive"}
                     value={t("craete")}
                   />
                 </div>

@@ -6,12 +6,12 @@
       "investor": "Investors",
       "captain": "Captains",
       "loadApp": "Load App",
-      "name":"Takhawy"
+      "name": "Takhawy"
     },
     "about": {
       "title1": "Where do you want to meet my brother? ",
       "title2": "",
-      "dec": "Discover the simple and complete world of travel through Tawazeez app. Get financial savings and social connection, our app combines easy access to cars and ride-sharing for an unforgettable experience."
+      "dec": "Discover the simple and complete world of travel through Takhawy app. Get financial savings and social connection, our app combines easy access to cars and ride-sharing for an unforgettable experience."
     },
     "ad": {
       "title": "We provide you with features in Takhawy",
@@ -26,7 +26,8 @@
     },
     "app": {
       "title": "Download Takhawy app now!",
-      "dec": "Effortless car sharing: Easily book and pay with our car sharing app, which offers a diverse fleet, real-time GPS tracking, and secure transactions."
+      "dec": "Effortless car sharing: Easily book and pay with our car sharing app, which offers a diverse fleet, real-time GPS tracking, and secure transactions.",
+      "from":"Download From"
     },
     "who": {
       "title1": "Who Takhawy",
@@ -42,7 +43,7 @@
       "title": "Frequently Questions"
     },
     "footer": {
-      "name":"Takhawy",
+      "name": "Takhawy",
       "dec": "Takhawy is a ride-sharing app that shares rides from one city to another in the Kingdom.",
       "title1": "Services",
       "title2": "Policy",
@@ -60,9 +61,12 @@
       "title2": "Our Message",
       "dec2": "We seek to reduce the costs of the traveler's trip by a rate ranging from 50% to 75%",
       "title3": "Our Values",
-      "dec31": "Confidentiality: Maintaining entered customer data",
-      "dec32": "Continue: Monitor itinerary",
-      "dec33": "Quality: selecting the best vehicles and raising service levels",
+      "dec31": "Confidentiality: ",
+      "dec311": " Maintaining entered customer data",
+      "dec32": "Continue: ",
+      "dec322": " Monitor itinerary",
+      "dec33": "Quality: ",
+      "dec333": " selecting the best vehicles and raising service levels",
       "title4": "Strategic Objective ",
       "dec4": " To be one of the first in this new field and benefit from strategic acquisitions in the cities of the Kingdom."
     }
@@ -85,8 +89,10 @@
       "cvPlace": "Upload your resume",
       "send": "send"
     },
-    "share": "Share job",
-    "copy": "copy link"
+    "share": "Share this job",
+    "copy": "copy link",
+    "copyDone": "Copied",
+    "job": "job"
   },
   "investor": {
     "title": "Join us on our journey of growth",
@@ -153,7 +159,7 @@
     "NumCarDec": "Write the vehicle number such as N T U 2 9 2 9",
     "imgCarTitle": "Pictures of the vehicle",
     "imgCarDec": "Upload photos of the vehicle from four directions",
-    "errorImgCar":"Please upload the photos of the vehicle from four sides for complete information",
+    "errorImgCar": "Please upload the photos of the vehicle from four sides for complete information",
     "classTitle": "vehicle class",
     "classDec": "Select vehicle class",
     "seatsTitle": "Number of seats",
@@ -169,8 +175,12 @@
     "back": "Previous",
     "craete": "Create an account",
     "next": "Next",
-    "notifTitle":"Your account has been created successfully!",
-    "notifMessage":"You can now log in as a captain through the app with ease!"
+    "notifTitle": "Your account has been created successfully!",
+    "notifMessage": "You can now log in as a captain through the app with ease!"
+  },
+  "notfication": {
+    "sendContact": "Your request has been sent",
+    "investorTitle": "Registered ",
+    "investorDec": "The data is being reviewed by management"
   }
- 
 }

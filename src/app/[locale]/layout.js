@@ -29,7 +29,7 @@ export default function RootLayout({ children, params }) {
             <Notifications />
             <LayNav locale={params.locale} />
             <main>{children}</main>
-            <Footer />
+            <Footer  locale={params.locale} />
           </MantineProvider>
         </NextIntlClientProvider>
 
