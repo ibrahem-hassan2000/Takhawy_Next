@@ -2858,3 +2858,14 @@ html[dir="ltr"] .mantine-Notification-root {
 .mantine-Select-error {
   display: none;
 }
+.logoNav{
+  height: 110px;
+  width: auto;
+}
+@media(max-width: 992px){
+
+  .logoNav{
+    height: 66px;
+    width: auto;
+  }
+}
